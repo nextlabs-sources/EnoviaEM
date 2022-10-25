@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<runtime-configuration>
+    <policy-controller-attributes>
+        <data-format>
+            <em-prefix></em-prefix>
+            <extension-prefix></extension-prefix>
+        </data-format>
+        <attribute>
+            <!-- default attribute section for all business object type -->
+            <type>Base BO</type>
+            <baseattr>type</baseattr>
+            <baseattr>name</baseattr>
+            <baseattr>revision</baseattr>
+            <baseattr>vault</baseattr>
+            <baseattr>id</baseattr>
+            <baseattr>altowner1</baseattr>
+            <baseattr>altowner2</baseattr>
+            <customattr></customattr>
+        </attribute>
+    </policy-controller-attributes>
+    <inheritance-list>
+        <inheritance>
+            <name>Part Specification</name>
+            <from-type>Part</from-type>
+            <to-type>CAD Drawing</to-type>
+            <relationship>to</relationship>
+        </inheritance>
+        <inheritance>
+            <name>EBOM</name>
+            <from-type>Part</from-type>
+            <to-type>Part</to-type>
+            <relationship>to</relationship>
+        </inheritance>
+    </inheritance-list>
+    <type-protected-relationships>
+        <type>
+            <name>Altered Item</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Component Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Error Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Furnished Material</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Intellectual Property</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Mechanical Assembly</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Mechanical Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Migrated Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Mil Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Printed Board</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Printed Board Assembly</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Schematic</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Software Assembly</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Software Deliverable</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Software Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Software Tool</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Source Only</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Support Document</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>System</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Test Select</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Text BOM Item</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+        <type>
+            <name>Vendor Part</name>
+            <relationships-from>
+                <name>Part Specification</name>
+            </relationships-from>
+            <relationships-to></relationships-to>
+        </type>
+    </type-protected-relationships>
+    <!-- Enovia Extension: Sample -->
+    <extensions>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>Drawing Print</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>Spec Markup</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>Derived Output</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>Document</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>Generated Report</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>PBA Design</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>PWB Design</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>SCM Design</business-object-type>
+        </extension>
+        <extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.RCIDOCUMENTSExtension</class>
+            <business-object-type>UG Model</business-object-type>
+        </extension>
+        <!--<extension type="resource">
+            <class>com.nextlabs.enovia.extension.impl.CADModelExtension</class>
+            <business-object-type>CAD Model</business-object-type>
+        </extension>
+        <extension type="subject">
+            <class>com.nextlabs.enovia.extension.impl.UserExtension</class>
+            <subject-type>User</subject-type>
+        </extension>
+        <extension type="subject">
+            <class>com.nextlabs.enovia.extension.impl.ApplicationExtension</class>
+            <subject-type>Application</subject-type>
+        </extension>-->
+    </extensions>
+    <policy-controller>
+        <config-file>openaz-pep-on-prem.properties</config-file>
+        <appname>Engineering Central</appname>
+        <default-action>allow</default-action>
+        <default-message>PDP connection timeout</default-message>
+        <default-na-action>deny</default-na-action>
+        <default-na-message>Not matching allow policy</default-na-message>
+        <default-indeterminate-action>deny</default-indeterminate-action>
+        <default-indeterminate-message>PDP error, please contact Administrator for help.</default-indeterminate-message>
+        <connect-retry-count>5</connect-retry-count>
+        <connect-retry-timer>100000</connect-retry-timer>
+    </policy-controller>
+    <system>
+        <config-reload-interval>36000</config-reload-interval>
+        <!-- notification: either Notice or FrameworkException -->
+        <notification-method>Notice</notification-method>
+        <replace-user-agent>false</replace-user-agent>
+        <username-to-lower>false</username-to-lower>
+    </system>
+</runtime-configuration>

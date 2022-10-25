@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system-configuration>
+	<enovia-filter>
+		<value>program[NextLabsAccessCheck -method EvaluateAccess -construct ${OBJECTID} show] == true</value>
+	</enovia-filter>
+	
+	<trigger>
+		description ""
+		"eService Constructor Arguments" "${OBJECTID}"
+		"eService Error Type" "Error"
+		"eService Method Name" "EvaluateAccess"
+		"eService Program Argument 1" "${ACTION}"
+		"eService Program Argument 2" "${OBJECTID}"
+		"eService Program Argument 3" "${TYPE}"
+		"eService Program Argument 4" "${POLICY}"
+		"eService Program Argument 5" "${RELTYPE}"
+		"eService Program Argument 6" "${CONNECTION}"
+		"eService Program Argument 7" "${FILENAME_ORIGINAL}"
+		"eService Program Argument 8" ""
+		"eService Program Argument 9" ""
+		"eService Program Argument 10" ""
+		"eService Program Argument 11" ""
+		"eService Program Argument 12" ""
+		"eService Program Argument 13" ""
+		"eService Program Argument 14" ""
+		"eService Program Argument 15" ""
+		"eService Program Argument Desc 1" "Action for NextLabs authentication"
+		"eService Program Argument Desc 2" "Business Object: Object ID"
+		"eService Program Argument Desc 3" "Business Object: Object type"
+		"eService Program Argument Desc 4" "Business Object/Create: Policy/Target Policy"
+		"eService Program Argument Desc 5" "[optional] Relationship: Relationship name"
+		"eService Program Argument Desc 6" "[optional] Connect/Disconnect: End of relationship (From or To)"
+		"eService Program Argument Desc 7" "[optional] Target file (if blank checkout/remove all files"
+		"eService Program Argument Desc 8" ""
+		"eService Program Argument Desc 9" ""
+		"eService Program Argument Desc 10" ""
+		"eService Program Argument Desc 11" ""
+		"eService Program Argument Desc 12" ""
+		"eService Program Argument Desc 13" ""
+		"eService Program Argument Desc 14" ""
+		"eService Program Argument Desc 15" ""
+		"eService Program Name" "NextLabsTriggerCheck"
+		"eService Sequence Number" "3"
+		"eService Target States" ""
+	</trigger>
+</system-configuration>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment-configuration>
+	<custom-attributes>
+		<!--<attribute>
+    		<name>nxl_USML</name>
+    		<type>Part</type>
+    		<format>String</format>
+			<value default="yes">PUBLIC</value>
+			<value>PII</value>
+			<value>COPYRIGHT</value>
+			<value>TRADEMARK</value>
+			<value>PATENT</value>
+		</attribute>
+		<attribute>
+    		<name>nxl_Export_Classification</name>
+    		<type>Part</type>
+    		<format>String</format>
+			<value></value>
+		</attribute>
+		<attribute>
+			<name>nxl_ECCN</name>
+			<type>Part</type>
+			<format>String</format>
+			<value></value>
+		</attribute>-->
+	</custom-attributes>
+	
+	<enovia-policies>
+	</enovia-policies>
+	
+	<enovia-triggers>
+		<trigger>
+			<name>TypeDOCUMENTSCheckoutNextLabs</name>
+			<action>Checkout</action>
+			<type>DOCUMENTS</type>
+		</trigger>
+		<trigger>
+			<name>TypeDOCUMENTSDeleteNextLabs</name>
+			<action>RemoveFile</action>
+			<type>DOCUMENTS</type>
+		</trigger>
+		<trigger>
+			<name>TypePartDisconnectNextLabs</name>
+			<action>Disconnect</action>
+			<type>Part</type>
+		</trigger>
+		<!--<trigger>
+			<name>TypePartDisconnectNextLabs</name>
+			<action>Disconnect</action>
+			<type>Part</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelCheckoutNextLabs</name>
+			<action>Checkout</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelCheckinNextLabs</name>
+			<action>Checkin</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelRemoveFileNextLabs</name>
+			<action>RemoveFile</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelChangeNameNextLabs</name>
+			<action>ChangeName</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelChangeOwnerNextLabs</name>
+			<action>ChangeOwner</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelChangePolicyNextLabs</name>
+			<action>ChangePolicy</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelChangeTypeNextLabs</name>
+			<action>ChangeType</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelChangeVaultNextLabs</name>
+			<action>ChangeVault</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelModifyAttributeNextLabs</name>
+			<action>ModifyAttribute</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelModifyDescriptionNextLabs</name>
+			<action>ModifyDescription</action>
+			<type>CAD Model</type>
+		</trigger>
+		<trigger>
+			<name>TypeCADModelCreateNextLabs</name>
+			<action>Create</action>
+			<type>CAD Model</type>
+		</trigger>-->
+	</enovia-triggers>
+</deployment-configuration>

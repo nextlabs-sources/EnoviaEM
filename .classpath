@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_75">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="xlib/jar/common.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/commons-configuration-1.8.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/component.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/eMatrixServletRMI.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/engineering.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/mx_poi.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/servlet-api.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/framework.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/ehcache-2.10.3.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/slf4j-ext-1.7.21.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/httpcore-4.3.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/jackson-annotations-2.6.0.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/jackson-core-2.6.3.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/jackson-databind-2.6.3.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/nextlabs-openaz-pep.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/openaz-pep-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/openaz-xacml-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="xlib/jar/crypt.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

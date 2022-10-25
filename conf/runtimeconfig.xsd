@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="runtime-configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="policy-controller-attributes" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="data-format" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="em-prefix" type="xs:string" />
+										<xs:element name="extension-prefix" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="attribute" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="type" type="xs:string" />
+										<xs:element name="baseattr" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string" />
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="customattr" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string" />
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="inheritance-list" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="inheritance" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string" />
+										<xs:element name="from-type" type="xs:string" />
+										<xs:element name="to-type" type="xs:string" />
+										<xs:element name="relationship" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="type-protected-relationships" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="type" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string" />
+										<xs:element name="relationships-from" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" maxOccurs="unbounded" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string" />
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="relationships-to" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="name" maxOccurs="unbounded" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string" />
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="extensions" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="extension" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="class" type="xs:string" />
+										<xs:choice>
+											<xs:element name="business-object-type" type="xs:string" />
+											<xs:element name="subject-type" type="xs:string" />
+										</xs:choice>
+									</xs:sequence>
+									<xs:attribute name="type" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="policy-controller" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="config-file" type="xs:string" />
+							<xs:element name="appname" type="xs:string" />
+							<xs:element name="default-action" type="xs:string" />
+							<xs:element name="default-message" type="xs:string" />
+							<xs:element name="default-na-action" type="xs:string" />
+							<xs:element name="default-na-message" type="xs:string" />
+							<xs:element name="default-indeterminate-action" type="xs:string" />
+							<xs:element name="default-indeterminate-message" type="xs:string" />
+							<xs:element name="connect-retry-count" type="xs:string" />
+							<xs:element name="connect-retry-timer" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="system" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="config-reload-interval" type="xs:string" />
+							<xs:element name="notification-method" type="xs:string" />
+							<xs:element name="replace-user-agent" type="xs:string" />
+							<xs:element name="username-to-lower" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

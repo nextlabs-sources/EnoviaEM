@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="deployment-configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="custom-attributes" maxOccurs="1" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="attribute" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="nxl_\S*" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="type" type="xs:string"/>
+										<xs:element name="format" type="xs:string"/>
+										<xs:element name="value" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="default" type="xs:string" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="enovia-policies" maxOccurs="1" minOccurs="0" >
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="policy" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string"/>
+										<xs:element name="role" type="xs:string"/>
+										<xs:element name="state" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="enovia-triggers" maxOccurs="1" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="trigger" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="\S*NextLabs" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="action">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Checkout"/>
+													<xs:enumeration value="RemoveFile"/>
+													<xs:enumeration value="Checkin"/>
+													<xs:enumeration value="ModifyDescription"/>
+													<xs:enumeration value="ModifyAttribute"/>
+													<xs:enumeration value="ChangeName"/>
+													<xs:enumeration value="ChangeOwner"/>
+													<xs:enumeration value="ChangePolicy"/>
+													<xs:enumeration value="ChangeType"/>
+													<xs:enumeration value="ChangeVault"/>
+													<xs:enumeration value="Create"/>
+													<xs:enumeration value="Connect"/>
+													<xs:enumeration value="Disconnect"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="type" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

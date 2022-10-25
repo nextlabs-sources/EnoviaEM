@@ -1,0 +1,158 @@
+<!-- build_xlib.xml
+
+Description:
+	This ANT script constructs <project root>/xlib.
+
+	To use this script, you must update properties is <project root>/scripts/build.properties or overide 
+	them from commandline (using -D option). For example:
+		
+		set PATH=C:\depot\external\apache-ant\apache-ant-1.8.4\bin;%PATH%
+		ant -XX:MaxPermSize=512m -Dnlbuildroot=C:/depot/PolicyStudio/dev/BuildScript_1205 -Dexternal.dir=c:/depot/external -Dnlexternaldir=c:/depot/external -f scripts/build_xlib.xml
+		
+	or
+		
+		set PATH=C:\depot\external\apache-ant\apache-ant-1.8.4\bin;%PATH%
+		set ANT_OPTS=-XX:MaxPermSize=512m -Dnlbuildroot=%NLBUILDROOT% -Dexternal.dir=%NLEXTERNALDIR% -Dnlexternaldir=%NLEXTERNALDIR% 
+		ant -f scripts/build_xlib.xml -v	
+-->
+<project name="build_xlib" default="all" basedir=".">
+	<!-- Debug 
+	<echoproperties />
+	<fail message="INFO: Debug" />
+	-->
+	
+	<!-- Property files -->
+	<property file="${basedir}/build.properties" />
+	
+	<!-- Global properties -->
+	<property name="xlib_dir" location="${nlbuildroot}/xlib" />
+	<property name="xlib_jar_dir" value="${xlib_dir}/jar" />
+
+	<!-- TBD: psexternaldir is a temporary variable. It will be removed with all files 
+		under lib are extracted automatically from build artifacts. -->
+	<property name="psexternaldir" location="${nlbuildroot}/lib" />
+
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<echo message="INFO: Dump properties completed" />
+	
+	<!-- Sanity checks -->
+	<fail message="nlbuildroot is not set" unless="nlbuildroot" />
+	<fail message="nlbuildroot is empty">
+		<condition>
+			<equals arg1="${nlbuildroot}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${nlbuildroot}" type="dir" property="local.nlbuildroot_exists" />
+	<fail message="nlbuildroot directory does not exist - ${nlbuildroot}" unless="local.nlbuildroot_exists" />
+
+	<fail message="nlexternaldir is not set" unless="nlexternaldir" />
+	<fail message="nlexternaldir is empty">
+		<condition>
+			<equals arg1="${nlexternaldir}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${nlexternaldir}" type="dir" property="local.nlexternaldir_exists" />
+	<fail message="nlexternaldir directory does not exist - ${nlexternaldir}" unless="local.nlexternaldir_exists" />
+	
+	<fail message="java_sdk_artifacts_bin_zip_file is not set" unless="java_sdk_artifacts_bin_zip_file" />
+	<fail message="java_sdk_artifacts_bin_zip_file is empty">
+		<condition>
+			<equals arg1="${java_sdk_artifacts_bin_zip_file}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${java_sdk_artifacts_bin_zip_file}" type="file" property="local.sdk_zip_file_exists" />
+	<fail message="java_sdk_artifacts_bin_zip_file directory does not exist - ${java_sdk_artifacts_bin_zip_file}" unless="local.sdk_zip_file_exists" />
+
+	<echo message="INFO: Sanity check completed (no error)" />
+
+	<!-- Targets -->
+	<target name="all" depends="clean, prepare_external_jar,prepare_enovia_jar, prepare_sdk_jar,prepare_destiny_jar" />
+
+	<target name="prepare_external_jar">
+		<mkdir dir="${xlib_jar_dir}" />
+		<copy file="${nlexternaldir}/commons-lang3/commons-lang3-3.3.2/commons-lang3-3.3.2.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/commons-configuration/commons-configuration-1.8/commons-configuration-1.8.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/commons-logging/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/ehcache/ehcache-2.10.3/lib/ehcache-2.10.3.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/ehcache/ehcache-2.10.3/lib/slf4j-api-1.7.21.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/ehcache/ehcache-2.10.3/lib/slf4j-ext-1.7.21.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/log4j/apache-log4j-1.2.17/log4j-1.2.17.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+	</target>
+	
+	<target name="prepare_enovia_jar">
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/servlet-api.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/mx_poi.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/common.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/component.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/framework.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/eMatrixServletRMI.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${nlexternaldir}/enovia/enoviav6r2015/engineering.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" verbose="true" />
+	</target>
+			
+	<target name="prepare_sdk_jar">
+		<mkdir dir="${xlib_jar_dir}" />
+		
+		<!--Java CE SDK -->
+		<unzip src="${java_sdk_artifacts_bin_zip_file}" dest="${xlib_jar_dir}" overwrite="yes">
+			<patternset>
+				<include name="**/nextlabs-openaz-pep.jar" />
+				<include name="**/commons-lang-2.6.jar" />
+				<include name="**/guava-19.0.jar" />
+				<include name="**/httpclient-4.3.1.jar" />
+				<include name="**/httpcore-4.3.jar" />
+				<include name="**/jackson-annotations-2.6.0.jar" />
+				<include name="**/jackson-core-2.6.3.jar" />
+				<include name="**/jackson-databind-2.6.3.jar" />
+				<include name="**/openaz-xacml-0.0.1-SNAPSHOT.jar" />
+				<include name="**/openaz-pep-0.0.1-SNAPSHOT.jar" />
+			</patternset>
+			<mapper type="flatten" />
+		</unzip>
+		
+		<!-- Check if file exists 
+		Notes: Currently, Unzip task or ZipFileSet does not have a way to report error if a file
+		cannot be found in a zip file. In addition, there is no simple way to check if a file 
+		exists in Ant. We can call out to Bash to check if a file exists, but that creates an
+		unnecessary dependency on Bash. In the following, we try to check if a file exist using
+		a fake move. Doing this, an error will be generated if a file does not exist.
+		-->
+		<move file="${xlib_jar_dir}/nextlabs-openaz-pep.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/commons-lang-2.6.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/guava-19.0.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/httpclient-4.3.1.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/httpcore-4.3.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/jackson-annotations-2.6.0.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/jackson-core-2.6.3.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/jackson-databind-2.6.3.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/openaz-xacml-0.0.1-SNAPSHOT.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+		<move file="${xlib_jar_dir}/openaz-pep-0.0.1-SNAPSHOT.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+	</target>
+	
+	<target name="prepare_destiny_jar">
+			<mkdir dir="${xlib_jar_dir}" />
+
+			<!-- Extract files -->
+			<unzip src="${xlib_destiny_build_artifacts_zip_file}" dest="${xlib_jar_dir}" overwrite="yes">
+				<patternset>
+					<include name="agent/lib/crypt.jar" />
+				</patternset>
+				<mapper type="flatten" />
+			</unzip>
+
+			<!-- Check if file exists 
+			Notes: Currently, Unzip task or ZipFileSet does not have a way to report error if a file
+			cannot be found in a zip file. In addition, there is no simple way to check if a file 
+			exists in Ant. We can call out to Bash to check if a file exists, but that creates an
+			unnecessary dependency on Bash. In the following, we try to check if a file exist using
+			a fake move. Doing this, an error will be generated if a file does not exist.
+			-->
+			<move file="${xlib_jar_dir}/crypt.jar" todir="${xlib_jar_dir}" preservelastmodified="true" overwrite="false" />
+			
+		</target>
+
+	<target name="clean">
+		<delete dir="${xlib_dir}" />
+	</target>
+</project>
